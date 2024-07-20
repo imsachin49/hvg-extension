@@ -1,21 +1,22 @@
 import { TbArrowsSort } from "react-icons/tb";
 import Announcement from "./Announcement";
 import { useEffect, useState,useMemo } from "react";
+import { API_URL,WEBSOCKET_URL } from "../../config";
 
 export default function Announcements() {
   const [announcements, setAnnouncements] = useState([]);
-  const ws = useMemo(() => new WebSocket("ws://localhost:8080"), []);
+  const ws = useMemo(() => new WebSocket(WEBSOCKET_URL), []);
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
-      const res = await fetch("http://localhost:8080/api/announcement");
+      const res = await fetch(`${API_URL}/api/announcement`);
       const data = await res.json();
       const sortedData = data?.data.sort((a, b) => new Date(b.date) - new Date(a.date));
       setAnnouncements(sortedData);
       console.log("Sorted data", sortedData);
     };
     fetchAnnouncements();
-  }, [])
+  }, []);
 
   useEffect(() => {
     ws.onopen = () => {
