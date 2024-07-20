@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Pomodoro Clock",
+  "version": "1.0",
+  "description": "A simple Pomodoro clock as a Chrome extension home page.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
