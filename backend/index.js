@@ -2,15 +2,15 @@ const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
 const port = process.env.PORT || 8080;
-
 const app = express();
+const cors=require('cors');
+
+app.use(cors('*'));
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-// Import your announcement routes
 const announcementRoutes = require("./routes/announcement");
 
-// Middleware
 app.use(express.json());
 
 app.get("/", (req, res) => {

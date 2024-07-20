@@ -13,7 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Announcement {
   id             Int      @id @default(autoincrement())
   name           String   

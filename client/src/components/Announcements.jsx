@@ -1,21 +1,58 @@
 import { TbArrowsSort } from "react-icons/tb";
 import Announcement from "./Announcement";
-// import { announcementData } from "../data";
+import { useEffect, useState,useMemo } from "react";
 
 export default function Announcements() {
+  const [announcements, setAnnouncements] = useState([]);
+  const ws = useMemo(() => new WebSocket("ws://localhost:8080"), []);
+
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      const res = await fetch("http://localhost:8080/api/announcement");
+      const data = await res.json();
+      const sortedData = data?.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setAnnouncements(sortedData);
+      console.log("Sorted data", sortedData);
+    };
+    fetchAnnouncements();
+  }, [])
+
+  useEffect(() => {
+    ws.onopen = () => {
+      console.log("Connected to WebSocket server");
+    };
+
+    ws.onerror = (error) => {
+      console.error("WebSocket error:", error);
+    };
+  }, [ws]);
+
+  ws.onmessage = (event) => {
+    const newAnnouncement = JSON.parse(event.data);
+    setAnnouncements((prevAnnouncements) => [newAnnouncement, ...prevAnnouncements]);
+    console.log("New announcement received:", newAnnouncement);
+  };
+
+  ws.onclose = () => {
+    console.log("Disconnected from WebSocket server");
+  };
+
   return (
-    <div className="text-black bg-white rounded-md p-[5px] pb-5 max-h-[290px] overflow-auto min-w-[600px] w-fit">
+    <div className="text-black bg-white rounded-md p-[5px] pb-1 max-h-[240px] overflow-auto min-w-[700px] w-fit">
       <div className="flex items-center justify-between mx-2 border-b mb-2 sticky top-[-6px] bg-white">
-        <div className="py-1 text-xl text-gray-900">Recent Announcements</div>
-        <div className="inline-flex items-center gap-1 cursor-pointer border border-gray-200 px-2 py-[2px] rounded-full"><TbArrowsSort />Sort By</div>
+        <div className="py-1 text-xl text-gray-900 bg-white z-90">Recent Announcements</div>
+        <div className="inline-flex items-center gap-1 cursor-pointer border border-gray-200 px-2 py-[2px] rounded-full">
+          <TbArrowsSort />Sort By
+        </div>
       </div>
       <div className="flex flex-col gap-[4px]">
-        <Announcement />
-        <Announcement />
-        <Announcement />
-        <Announcement />
-        <Announcement />
+        {announcements?.map((item, idx) => (
+          <div key={idx}>
+            <Announcement item={item} />
+            <hr />
+          </div>
+        ))}
       </div>
     </div>
-  )
+  );
 }

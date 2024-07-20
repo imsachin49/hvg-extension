@@ -4,7 +4,7 @@ import { CiSettings } from "react-icons/ci";
 
 export default function Sidebar() {
   return (
-    <div className='w-[5vw] p-5 rounded-md flex flex-col justify-between items-center text-gray-100'>
+    <div className='w-[5vw] h-[90vh] p-5 rounded-md flex flex-col justify-between items-center text-gray-100'>
       <div className="cursor-pointer">
         <HiOutlineHome size={24} />
       </div>

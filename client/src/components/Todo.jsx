@@ -18,7 +18,7 @@ export default function Todo() {
 
     const handleAddTask = () => {
         if (newTask.trim() !== '') {
-            setTasks([...tasks, { text: newTask, completed: false }]);
+            setTasks([{ text: newTask, completed: false }, ...tasks]);
             setNewTask('');
         }
     };
@@ -38,7 +38,7 @@ export default function Todo() {
     const hasCompletedTasks = tasks.some(task => task.completed);
 
     return (
-        <div className='bg-[#e0f2e9] text-[#2e7d32] p-4 rounded-md w-full min-w-[200px] max-w-[350px] max-h-[200px] overflow-auto'>
+        <div className='bg-[#e0f2e9] text-[#2e7d32] p-4 rounded-md w-full min-w-[200px] max-w-[350px] max-h-[240px] overflow-auto'>
             <div className="py-1 text-xl text-gray-900">My Todo</div>
             <div className="flex flex-col justify-between gap-1">
                 <div className="w-full flex gap-2">
@@ -53,19 +53,20 @@ export default function Todo() {
                 </div>
                 {tasks.length === 0 && <h1 className="text-center text-sm text-indigo-600 py-1">No Tasks Added</h1>}
                 {tasks.map((task, index) => (
-                    <div key={index} className="border flex items-center px-2 gap-1">
+                    <div key={index} className="border rounded-md border-[#adcaae] flex items-center px-2 gap-1">
                         <input
                             type="checkbox"
                             checked={task.completed}
+                            className="border-none outline-none"
                             onChange={() => handleTaskChange(index)}
                         />
-                        <div className={`rounded-md p-[5px] text-sm inline-flex ${task.completed ? 'line-through text-gray-500' : ''}`}>
+                        <div className={`rounded-md p-[5px] text-sm inline-flex ${task.completed ? 'line-through text-green-500' : ''}`}>
                             {task.text}
                         </div>
                     </div>
                 ))}
                 {hasCompletedTasks && (
-                    <button onClick={handleRemoveCompleted} className="border px-2 py-1 rounded-md text-sm mt-2">Remove Completed Tasks</button>
+                    <button onClick={handleRemoveCompleted} className="border bg-rose-400 text-white px-2 py-1 rounded-md text-sm mt-2">Remove Completed Tasks</button>
                 )}
             </div>
         </div>
