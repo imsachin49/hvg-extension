@@ -38,7 +38,7 @@ export default function Todo() {
     const hasCompletedTasks = tasks.some(task => task.completed);
 
     return (
-        <div className='bg-[#e0f2e9] text-[#2e7d32] p-4 rounded-md w-full min-w-[350px] max-h-[300px] overflow-auto'>
+        <div className='bg-[#e0f2e9] text-[#2e7d32] p-4 rounded-md w-full min-w-[200px] max-w-[350px] max-h-[300px] overflow-auto'>
             <div className="py-2 text-2xl font-semibold">My Todo</div>
             <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
