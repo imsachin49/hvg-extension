@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-*,html,body{
-    font-family: "Exo 2", sans-serif;
-    padding: 0;
-    margin: 0;
+*,
+html,
+body {
+  font-family: "Exo 2", sans-serif;
+  padding: 0;
+  margin: 0;
 }

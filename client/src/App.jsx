@@ -5,11 +5,11 @@ import Sidebar from './components/Sidebar';
 
 const App = () => {
   return (
-    <div className="App flex ">
-      {/*Sidebar*/}
-      <Sidebar/>
-      {/* Main component */}
-      <Main/>
+    <div className="App">
+      <div className='w-full flex p-5 gap-5'>
+        <Sidebar/>
+        <Main/>
+      </div>
     </div>
   );
 };

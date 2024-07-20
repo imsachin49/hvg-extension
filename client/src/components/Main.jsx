@@ -1,9 +1,11 @@
-
+import Todo from "./Todo";
 
 export default function Main() {
   return (
-    <div className='w-[95vw] h-[100vh] bg-gray-300 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis rem ipsam neque iste adipisci fugit cumque illo rerum fugiat expedita quis reiciendis, error ullam ratione incidunt qui a ad. Quaerat?
+    <div className='w-[95vw] h-[90vh] shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] border border-green-950 p-5 rounded-md text-gray-950'>
+      <div className="w-fit">
+        <Todo />
+      </div>
     </div>
   )
 }
