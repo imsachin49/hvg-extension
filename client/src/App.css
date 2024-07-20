@@ -9,12 +9,14 @@ body {
   width: 100%;
 }
 
-/* styles/glassmorphism.css */
-.glassmorphism {
-  background: rgba(173, 255, 47, 0.2); /* Light green tint */
-  box-shadow: 0 8px 32px 0 rgba(0, 128, 0, 0.2); /* Green shadow */
-  backdrop-filter: blur(9.5px);
-  -webkit-backdrop-filter: blur(9.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(173, 255, 47, 0.2); /* Light green border */
+.bg-light-red {
+  background-color: rgba(128, 88, 88, 0.38);
+}
+
+.bg-light-teal {
+  background-color: rgba(64, 88, 86, 0.38);
+}
+
+.bg-light-indigo{
+  background-color: rgb(53,51,70,0.38);
 }

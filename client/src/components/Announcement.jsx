@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { PiTriangleFill } from "react-icons/pi";
 import { formatDateTime } from "../utils/dateFormat";
 

@@ -1,59 +1,100 @@
-import { useState, useEffect, useRef } from 'react';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
-import { IoPlay, IoPause } from "react-icons/io5";
+import { useState, useEffect } from 'react';
 
-export default function Pomodoro() {
-  const [secondsLeft, setSecondsLeft] = useState(25 * 60); // 25 minutes in seconds
-  const [isRunning, setIsRunning] = useState(false);
-  const intervalRef = useRef(null);
+const Pomodoro = () => {
+  const [time, setTime] = useState(1500); 
+  const [active, setActive] = useState(false);
+  const [mode, setMode] = useState('Pomodoro'); // Modes: Pomodoro, Short Break, Long Break
 
   useEffect(() => {
-    if (isRunning) {
-      intervalRef.current = setInterval(() => {
-        setSecondsLeft(prevSecondsLeft => {
-          if (prevSecondsLeft <= 0) {
-            clearInterval(intervalRef.current);
-            return 0;
-          }
-          return prevSecondsLeft - 1;
-        });
+    let timer = null;
+    if (active) {
+      timer = setInterval(() => {
+        setTime((prev) => (prev > 0 ? prev - 1 : 0));
       }, 1000);
-    } else {
-      clearInterval(intervalRef.current);
+    } else if (!active && time !== 0) {
+      clearInterval(timer);
     }
-    return () => clearInterval(intervalRef.current);
-  }, [isRunning]);
+    return () => clearInterval(timer);
+  }, [active, time]);
 
-  const minutes = Math.floor(secondsLeft / 60);
-  const seconds = secondsLeft % 60;
-  const percentage = (secondsLeft / (25 * 60)) * 100;
+  const startTimer = () => {
+    setActive(true);
+  };
 
-  const handlePlayPause = () => {
-    setIsRunning(!isRunning);
+  const stopTimer = () => {
+    setActive(false);
+  };
+
+  const resetTimer = () => {
+    setActive(false);
+    setTime(mode === 'Pomodoro' ? 1500 : mode === 'Short Break' ? 300 : 900);
+  };
+
+  const switchMode = (newMode) => {
+    setMode(newMode);
+    setActive(false);
+    setTime(newMode === 'Pomodoro' ? 1500 : newMode === 'Short Break' ? 300 : 900);
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  const getBackgroundColor = () => {
+    switch (mode) {
+      case 'Short Break':
+        return 'bg-light-indigo';
+      case 'Long Break':
+        return 'bg-light-teal';
+      default:
+        return 'bg-light-red';  // Define a custom class for the default color
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-full w-full p-4 border">
-      <div className="w-[150px] h-[150px] mb-4">
-        <CircularProgressbar
-          value={percentage}
-          text={`${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`}
-          styles={buildStyles({
-            textColor: '#fff',
-            pathColor: '#4caf50',
-            trailColor: '#d6d6d6',
-            textSize: '16px',
-          })}
-        />
+    <div className={`flex flex-col items-center justify-center my-4 rounded-md ${getBackgroundColor()}`}>
+      <div className="text-white p-5 rounded-lg shadow-lg">
+        <div className="flex justify-between mb-4">
+          <button
+            onClick={() => switchMode('Pomodoro')}
+            className={`py-[2px] px-2 ${mode === 'Pomodoro' ? 'bg-zinc-400/30' : ''} rounded-md`}
+          >
+            Pomodoro
+          </button>
+          <button
+            onClick={() => switchMode('Short Break')}
+            className={`py-[2px] px-2 ${mode === 'Short Break' ? 'bg-zinc-400/30' : ''} rounded-md`}
+          >
+            Short Break
+          </button>
+          <button
+            onClick={() => switchMode('Long Break')}
+            className={`py-[2px] px-2 ${mode === 'Long Break' ? 'bg-zinc-400/30' : ''} rounded-md`}
+          >
+            Long Break
+          </button>
+        </div>
+        <div className="text-6xl mb-4 text-center">{formatTime(time)}</div>
+        <div className="flex items-center justify-center gap-2">
+          {!active && (
+            <button onClick={startTimer} className="bg-zinc-400/70 text-gray-100 py-2 px-4 rounded-md shadow-md hover:bg-gray-400/30">
+              START
+            </button>
+          )}
+          {active && (
+            <button onClick={stopTimer} className="bg-zinc-400/70 text-gray-100 py-2 px-4 rounded-md shadow-md hover:bg-gray-400/30">
+              STOP
+            </button>
+          )}
+          <button onClick={resetTimer} className="bg-zinc-400/70 text-gray-100 py-2 px-4 rounded-md shadow-md hover:bg-gray-400/30">
+            RESET
+          </button>
+        </div>
       </div>
-      <div className="text-white text-lg mb-4">Focus Time</div>
-      <button
-        onClick={handlePlayPause}
-        className="flex items-center justify-center bg-green-500 text-white rounded-full w-10 h-10 focus:outline-none"
-      >
-        {isRunning ? <IoPause size={24} /> : <IoPlay size={24} />}
-      </button>
     </div>
   );
-}
+};
+
+export default Pomodoro;

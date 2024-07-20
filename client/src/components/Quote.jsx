@@ -21,9 +21,9 @@ const Quote = () => {
   }, []);
 
   return (
-    <div className={`bg-[#e0f2e9] p-4 rounded-lg shadow-md w-[350px] h-[${quote.length / 50}+20px] overflow-hidden mt-5`}>
-      <p ref={quoteRef} className="text-sm font-serif text-[#2e7d32]">{quote}</p>
-      <p className="text-right text-xs font-medium text-[#2e7d32]">- {author}</p>
+    <div className={`bg-light-teal p-4 rounded-lg shadow-md w-[350px] h-[${quote.length / 50}+20px] overflow-hidden mt-5`}>
+      <p ref={quoteRef} className="text-sm text-gray-200">{quote}</p>
+      <p className="text-right text-xs font-medium text-gray-100">- {author}</p>
     </div>
   );
 };

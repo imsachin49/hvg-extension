@@ -1,6 +1,7 @@
 import Announcements from "./Announcements";
 import Todo from "./Todo";
 import Quote from './Quote';
+import Pomodoro from "./Pomodoro";
 
 export default function Main() {
   return (
@@ -8,6 +9,7 @@ export default function Main() {
       <div className="w-fit">
         <Todo />
         <Quote />
+        <Pomodoro />
       </div>
       <div className="w-fit min-w-[600px]">
         <Announcements />
