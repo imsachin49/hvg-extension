@@ -19,6 +19,7 @@ export default function CustomTabsDisplay() {
         <div
           key={index}
           className="w-full relative bg-light-indigo rounded-lg overflow-hidden cursor-pointer shadow-md"
+          onClick={() => handleTabClick(tab.tabUrl)}
         >
           <div className="h-full flex flex-col  p-3">
             <div className="flex text-white text-xl mb-2 justify-between">

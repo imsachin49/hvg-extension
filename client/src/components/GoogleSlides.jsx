@@ -5,7 +5,6 @@ export default function GoogleSlides({ iframelink }) {
       <iframe
         src={iframelink}
         className="rounded-md p-0"
-        frameBorder="0"
         width="700"
         height="404"
         allowfullscreen="true"
