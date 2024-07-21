@@ -6,7 +6,7 @@ import { Label } from 'flowbite-react';
 
 const tabTypes = [
     { id: 'regular', name: 'Regular Tab' },
-    { id: 'google-slide', name: 'Google Slide' },
+    { id: 'google-slide', name: 'Google Tab' },
 ];
 
 export function TabTypeSelector({ tabType, setTabType }) {

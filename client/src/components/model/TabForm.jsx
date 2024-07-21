@@ -9,7 +9,7 @@ export function TabForm({ tabType, tab, setTab, tabUrl, handleUrlChange, urlErro
                     <div className="flex flex-col gap-1">
                         <Label htmlFor="tab" value="Your Tab Name" />
                         <TextInput
-                            placeholder="My Gmail Tab"
+                            placeholder="My Example Tab"
                             value={tab}
                             onChange={(e) => setTab(e.target.value)}
                             required
@@ -18,7 +18,7 @@ export function TabForm({ tabType, tab, setTab, tabUrl, handleUrlChange, urlErro
                     <div className="flex flex-col gap-1">
                         <Label htmlFor="tabUrl" value="Your Tab URL" />
                         <TextInput
-                            placeholder="https://mail.google.com/mail/u/0"
+                            placeholder="https://example.com"
                             value={tabUrl}
                             type="text"
                             onChange={handleUrlChange}
@@ -31,7 +31,7 @@ export function TabForm({ tabType, tab, setTab, tabUrl, handleUrlChange, urlErro
                 <div className="flex flex-col gap-1">
                     <Label htmlFor="slideUrl" value="Google Slide URL" />
                     <TextInput
-                        placeholder="https://docs.google.com/presentation/d/..."
+                        placeholder="https://docs.google.com/document/d/XXXXXXXYYYYZZZ"
                         value={tabUrl}
                         type="text"
                         onChange={handleUrlChange}
