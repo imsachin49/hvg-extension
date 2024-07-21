@@ -17,11 +17,11 @@ export default function GoogleTabDisplay({ tab }) {
 
   return (
     <div
-      className="w-full relative bg-light-indigo rounded-lg overflow-hidden cursor-pointer shadow-md"
+      className="w-[47rem] relative bg-[#1c3232] rounded-lg overflow-hidden cursor-pointer shadow-md"
       onClick={() => handleTabClick(tab.tabUrl)}
     >
-      <div className="h-full flex flex-col  p-3">
-        <div className="flex text-white text-xl mb-2 justify-between">
+      <div className="h-full flex flex-row-reverse p-3">
+        <div className="flex text-white text-xl justify-between absolute top-2">
           <button
             onClick={(e) => handleCloseTab(e, tab)}
             className="text-white hover:text-red-500 transition-colors"
@@ -29,7 +29,7 @@ export default function GoogleTabDisplay({ tab }) {
             <IoMdClose />
           </button>
         </div>
-        <div>
+        <div className="mt-4">
           <GoogleSlides iframelink={tab.tabUrl} />
         </div>
       </div>
