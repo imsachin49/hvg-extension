@@ -16,10 +16,8 @@ export default function Announcement({ item }) {
             <li className="text-xs text-white border border-gray-200 rounded-md px-[6px] py-[2px] bg-indigo-600">
               {formatDateTime(item?.date)}
             </li>
-          </ul>
-          <ul>
             {item?.tags&&item.tags.map((e,index)=>(<li key={index} className="text-xs text-gray-500 border border-gray-200 rounded-md px-[6px] py-[2px]">
-              ${e}
+              {e}
             </li>))
             }
           </ul>

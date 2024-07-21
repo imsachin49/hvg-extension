@@ -11,9 +11,9 @@ export default function Announcements() {
     const fetchAnnouncements = async () => {
       const res = await fetch(`${API_URL}/api/announcement`);
       const data = await res.json();
-      const sortedData = data?.data.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setAnnouncements(sortedData);
-      console.log("Sorted data", sortedData);
+      // const sortedData = data?.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setAnnouncements(data.data);
+      // console.log("Sorted data", data.data);
     };
     fetchAnnouncements();
   }, []);
