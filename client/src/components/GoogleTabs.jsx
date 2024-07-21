@@ -1,8 +1,8 @@
 import { useTabs } from "./TabsProvider";
-import { TfiNewWindow } from "react-icons/tfi";
 import { IoMdClose } from "react-icons/io";
-export default function CustomTabsDisplay() {
-  const { tabs, removeTab } = useTabs();
+import GoogleSlides from "./GoogleSlides";
+export default function GoogleTabDisplay() {
+  const { googleTab, removeGoogleTab } = useTabs();
 
   const handleTabClick = (url) => {
     window.open(url, "_blank");
@@ -10,12 +10,12 @@ export default function CustomTabsDisplay() {
   
   const handleCloseTab = (e, tab) => {
     e.stopPropagation(); 
-    removeTab(tab);
+    removeGoogleTab(tab);
   };
 
   return (
-    <div className="flex flex-wrap gap-4">
-      {tabs.map((tab, index) => (
+    <div className="flex flex-wrap ">
+      {googleTab.map((tab, index) => (
         <div
           key={index}
           className="w-full relative bg-light-indigo rounded-lg overflow-hidden cursor-pointer shadow-md"
@@ -23,7 +23,6 @@ export default function CustomTabsDisplay() {
         >
           <div className="h-full flex flex-col  p-3">
             <div className="flex text-white text-xl mb-2 justify-between">
-              <h3 className="text-white text-sm font-bold mb-1">{tab.tab}</h3>
               <button
                 onClick={(e) => handleCloseTab(e, tab)}
                 className="text-white hover:text-red-500 transition-colors"
@@ -32,13 +31,7 @@ export default function CustomTabsDisplay() {
               </button>
             </div>
             <div>
-              <p
-                className="flex justify-between items-center text-gray-300 text-xs"
-                onClick={() => handleTabClick(tab.tabUrl)}
-              >
-                {tab.tabUrl}
-                <TfiNewWindow />
-              </p>
+              <GoogleSlides iframelink={tab.tabUrl} />
             </div>
           </div>
         </div>

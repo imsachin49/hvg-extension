@@ -27,7 +27,10 @@ export default function Todo() {
         const updatedTasks = tasks.map((task, i) =>
             i === index ? { ...task, completed: !task.completed } : task
         );
-        setTasks(updatedTasks);
+        
+        const sortedTasks = updatedTasks.sort((a, b) => a.completed - b.completed);
+        
+        setTasks(sortedTasks);
     };
 
     const handleRemoveCompleted = () => {
@@ -38,7 +41,7 @@ export default function Todo() {
     const hasCompletedTasks = tasks.some(task => task.completed);
 
     return (
-        <div className='bg-light-teal text-gray-850 p-4 rounded-md w-full min-w-[200px] max-w-[350px] max-h-[250px] overflow-auto'>
+        <div className='bg-light-teal text-gray-850 p-4 rounded-md w-full min-w-[200px] max-w-[350px] max-h-[250px] overflow-auto no-scrollbar'>
             <div className="py-1 text-xl text-gray-200">My Todo</div>
             <div className="flex flex-col justify-between gap-1">
                 <div className="w-full flex gap-2">
