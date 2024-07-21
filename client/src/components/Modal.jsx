@@ -41,7 +41,7 @@ export function ModalComp({ openModal, setOpenModal }) {
                     <div>
                         <Label htmlFor="tab" value="Your tab Name" />
                         <TextInput
-                            placeholder="My Gmail Tab"
+                            placeholder="Your Tab Name"
                             value={tab}
                             onChange={(e) => settab(e.target.value)}
                             required
@@ -50,7 +50,7 @@ export function ModalComp({ openModal, setOpenModal }) {
                     <div className="mb-3">
                         <Label htmlFor="tabUrl" value="Your Tab Url" />
                         <TextInput
-                            placeholder="https://docs.google.com/presentation/d/your_id"
+                            placeholder="https://example.com"
                             value={tabUrl}
                             type="text"
                             onChange={(e) => setTabUrl(e.target.value)}

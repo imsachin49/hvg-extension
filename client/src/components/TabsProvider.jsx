@@ -16,8 +16,14 @@ export function TabsProvider({ children }) {
         setTabs(updatedTabs);
     };
 
+    const removeTab = (tabToRemove) => {
+        const updatedTabs = tabs.filter(tab => tab.tabUrl !== tabToRemove.tabUrl);
+        localStorage.setItem('tabs', JSON.stringify(updatedTabs));
+        setTabs(updatedTabs);
+    };
+
     return (
-        <TabsContext.Provider value={{ tabs, addTab }}>
+        <TabsContext.Provider value={{ tabs, addTab,removeTab }}>
             {children}
         </TabsContext.Provider>
     );
