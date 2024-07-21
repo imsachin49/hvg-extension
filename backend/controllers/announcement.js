@@ -1,7 +1,7 @@
 const db = require("../utils/db");
 
 const postAnnouncement = async (req, res) => {
-  const { name, announcement } = req.body;
+  const { name, announcement  , tags} = req.body;
 
   if (!name || !announcement) {
     return res
@@ -14,6 +14,7 @@ const postAnnouncement = async (req, res) => {
       data: {
         name,
         announcement,
+        tags,
       },
     });
     return res.status(201).json(newAnnouncement);

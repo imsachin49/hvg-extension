@@ -18,4 +18,5 @@ model Announcement {
   name           String   
   announcement   String
   date            DateTime @default(now())
+  tags          String[]
 }
