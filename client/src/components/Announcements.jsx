@@ -39,14 +39,15 @@ export default function Announcements() {
   };
 
   return (
-    <div className="text-black bg-white rounded-md p-[5px] pb-1 max-h-[240px] overflow-auto min-w-[700px] w-fit">
-      <div className="flex items-center justify-between mx-2 border-b mb-2 sticky top-[-6px] bg-white">
-        <div className="py-1 text-xl text-gray-900 bg-white z-90">Recent Announcements</div>
-        <div className="inline-flex items-center gap-1 cursor-pointer border border-gray-200 px-2 py-[2px] rounded-full">
-          <TbArrowsSort />Sort By
+    <div className="text-white bg-light-teal rounded-md pb-1 max-h-72 overflow-auto no-scrollbar w-full">
+      <div className="flex items-center justify-between p-2 px-4 border-b mb-2 sticky top-0 bg-zinc-700 z-50">
+        <div className="py-1 text-xl z-90">Recent Announcements</div>
+        <div className="inline-flex items-center gap-1 cursor-pointer border border-gray-100 px-2 py-[2px] rounded-full">
+          <TbArrowsSort />
+          Sort By
         </div>
       </div>
-      <div className="flex flex-col gap-[4px]">
+      <div className="flex flex-col gap-1 px-2">
         {announcements?.map((item, idx) => (
           <div key={idx}>
             <Announcement item={item} />

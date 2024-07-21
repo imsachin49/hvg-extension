@@ -16,7 +16,7 @@ export default function ModalComp({ openModal, setOpenModal }) {
     const [tabType, setTabType] = useState(tabTypes[0]);
     const [urlError, setUrlError] = useState('');
     const [step, setStep] = useState(1);
-    const { addTab } = useTabs();
+    const { addTab,addGoogleTab} = useTabs();
 
     function isValidUrl(url) {
         const regex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
@@ -64,7 +64,12 @@ export default function ModalComp({ openModal, setOpenModal }) {
             return;
         }
         const newTab = { tab, tabUrl, type: tabType.id };
-        addTab(newTab);
+        if(tabType.id === 'google-slide'){
+            addGoogleTab(newTab);
+        }
+        else{
+            addTab(newTab);
+        }
         onCloseModal();
     }
 

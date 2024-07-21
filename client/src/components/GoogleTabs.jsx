@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useTabs } from "./TabsProvider";
-import { TfiNewWindow } from "react-icons/tfi";
 import { IoMdClose } from "react-icons/io";
+import GoogleSlides from "./GoogleSlides";
 
-export default function CustomTabsDisplay({ tab }) {
-  const { removeTab } = useTabs();
+export default function GoogleTabDisplay({ tab }) {
+  const { removeGoogleTab } = useTabs();
 
   const handleTabClick = (url) => {
     window.open(url, "_blank");
@@ -12,7 +12,7 @@ export default function CustomTabsDisplay({ tab }) {
 
   const handleCloseTab = (e, tab) => {
     e.stopPropagation();
-    removeTab(tab);
+    removeGoogleTab(tab);
   };
 
   return (
@@ -22,7 +22,6 @@ export default function CustomTabsDisplay({ tab }) {
     >
       <div className="h-full flex flex-col  p-3">
         <div className="flex text-white text-xl mb-2 justify-between">
-          <h3 className="text-white text-sm font-bold mb-1">{tab.tab}</h3>
           <button
             onClick={(e) => handleCloseTab(e, tab)}
             className="text-white hover:text-red-500 transition-colors"
@@ -31,13 +30,7 @@ export default function CustomTabsDisplay({ tab }) {
           </button>
         </div>
         <div>
-          <p
-            className="flex justify-between items-center text-gray-300 text-xs"
-            onClick={() => handleTabClick(tab.tabUrl)}
-          >
-            {tab.tabUrl}
-            <TfiNewWindow />
-          </p>
+          <GoogleSlides iframelink={tab.tabUrl} />
         </div>
       </div>
     </div>
