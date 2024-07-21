@@ -39,7 +39,7 @@ export default function Announcements() {
   };
 
   return (
-    <div className="text-white bg-light-teal rounded-md pb-1 max-h-72 overflow-auto no-scrollbar min-w-[700px] w-fit">
+    <div className="text-white bg-light-teal rounded-md pb-1 max-h-72 overflow-auto no-scrollbar w-full">
       <div className="flex items-center justify-between p-2 px-4 border-b mb-2 sticky top-0 bg-zinc-700 z-50">
         <div className="py-1 text-xl z-90">Recent Announcements</div>
         <div className="inline-flex items-center gap-1 cursor-pointer border border-gray-100 px-2 py-[2px] rounded-full">

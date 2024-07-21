@@ -54,7 +54,7 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center my-4 rounded-md ${getBackgroundColor()}`}>
+    <div className={`flex w-full flex-col items-center justify-center my-4 rounded-md ${getBackgroundColor()}`}>
       <div className="text-white p-5 rounded-lg shadow-lg">
         <div className="flex justify-between mb-4">
           <button
