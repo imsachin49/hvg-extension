@@ -1,7 +1,7 @@
 const db = require("../utils/db");
 
 const postAnnouncement = async (req, res) => {
-  const { name, announcement } = req.body;
+  const { name, announcement, tags } = req.body;
 
   if (!name || !announcement) {
     return res
@@ -14,6 +14,7 @@ const postAnnouncement = async (req, res) => {
       data: {
         name,
         announcement,
+        tags,
       },
     });
     return res.status(201).json(newAnnouncement);
@@ -70,53 +71,36 @@ const updateAnnouncement = async (req, res) => {
 };
 
 const getAnnouncements = async (req, res) => {
-  const { page = 1, pageSize = 10 } = req.query;
-
-  const pageNumber = parseInt(page, 10);
+  const { pageSize = 10 } = req.query;
+  
   const pageSizeNumber = parseInt(pageSize, 10);
 
-  if (
-    isNaN(pageNumber) ||
-    isNaN(pageSizeNumber) ||
-    pageNumber <= 0 ||
-    pageSizeNumber <= 0
-  ) {
-    return res
-      .status(400)
-      .json({ message: "Invalid page or pageSize parameters." });
+  if (isNaN(pageSizeNumber) || pageSizeNumber <= 0) {
+    return res.status(400).json({ message: "Invalid pageSize parameter." });
   }
 
   try {
     const announcements = await db.announcement.findMany({
-      skip: (pageNumber - 1) * pageSizeNumber,
-      take: pageSizeNumber 
+      orderBy: {
+        date: "desc", 
+      },
+      take: pageSizeNumber,
     });
-
-    const totalCount = await db.announcement.count();
 
     return res.status(200).json({
       data: announcements,
-      pagination: {
-        page: pageNumber,
-        pageSize: pageSizeNumber,
-        total: totalCount,
-        totalPages: Math.ceil(totalCount / pageSizeNumber),
-      },
     });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "Error retrieving announcements.",
-        error: error.message,
-      });
+    return res.status(500).json({
+      message: "Error retrieving announcements.",
+      error: error.message,
+    });
   }
 };
 
-
-module.exports={
-    postAnnouncement,
-    deleteAnnouncement,
-    updateAnnouncement,
-    getAnnouncements
+module.exports = {
+  postAnnouncement,
+  deleteAnnouncement,
+  updateAnnouncement,
+  getAnnouncements,
 };
