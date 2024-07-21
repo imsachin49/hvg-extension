@@ -6,8 +6,8 @@ export function TabForm({ tabType, tab, setTab, tabUrl, handleUrlChange, urlErro
         <div className="flex flex-col gap-2 pb-3">
             {tabType.id === 'regular' && (
                 <>
-                    <div className="flex flex-col gap-1">
-                        <Label htmlFor="tab" value="Your Tab Name" />
+                    <div className="flex flex-col gap-1 ">
+                        <Label htmlFor="tab" value="Your Tab Name" className="text-white" />
                         <TextInput
                             placeholder="My Example Tab"
                             value={tab}
@@ -16,7 +16,7 @@ export function TabForm({ tabType, tab, setTab, tabUrl, handleUrlChange, urlErro
                         />
                     </div>
                     <div className="flex flex-col gap-1">
-                        <Label htmlFor="tabUrl" value="Your Tab URL" />
+                        <Label htmlFor="tabUrl" value="Your Tab URL" className="text-white" />
                         <TextInput
                             placeholder="https://example.com"
                             value={tabUrl}
@@ -29,7 +29,7 @@ export function TabForm({ tabType, tab, setTab, tabUrl, handleUrlChange, urlErro
             )}
             {tabType.id === 'google-slide' && (
                 <div className="flex flex-col gap-1">
-                    <Label htmlFor="slideUrl" value="Google Slide URL" />
+                    <Label htmlFor="slideUrl" value="Google Slide URL" className="text-white" />
                     <TextInput
                         placeholder="https://docs.google.com/document/d/XXXXXXXYYYYZZZ"
                         value={tabUrl}
