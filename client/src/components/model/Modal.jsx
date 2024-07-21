@@ -80,9 +80,9 @@ export default function ModalComp({ openModal, setOpenModal }) {
 
     return (
         <Modal show={openModal} size="xl" onClose={onCloseModal} popup className="bg-teal-500/30">
-            <Modal.Header />
-            <Modal.Body onClick={(e) => e.stopPropagation()}>
-                <h3 className="text-xl font-medium text-gray-900 mb-4">Add Your Tab!</h3>
+            <Modal.Header className="bg-[#1c3232]" />
+            <Modal.Body onClick={(e) => e.stopPropagation()} className="bg-[#1c3232] text-white">
+                <h3 className="text-xl font-medium text-white mb-4">Add Your Tab!</h3>
                 {step === 1 && (
                     <div className="flex flex-col gap-2 pb-3">
                         <TabTypeSelector tabType={tabType} setTabType={setTabType} />
