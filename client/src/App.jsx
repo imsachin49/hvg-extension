@@ -7,8 +7,8 @@ const App = () => {
   return (
     <div className="App">
       <div className='w-full flex p-5 gap-5'>
-        <Sidebar/>
-        <Main/>
+        <Sidebar />
+        <Main />
       </div>
     </div>
   );

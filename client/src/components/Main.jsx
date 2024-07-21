@@ -2,10 +2,12 @@ import Announcements from "./Announcements";
 import Todo from "./Todo";
 import Quote from './Quote';
 import Pomodoro from "./Pomodoro";
+import GoogleSlides from "./GoogleSlides";
+import CustomTabsDisplay from "./CustomTabsDisplay";
 
 export default function Main() {
   return (
-    <div className='w-[100%] shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] border border-green-950 p-5 rounded-md text-gray-950 flex gap-5'>
+    <div className='p-5 rounded-md text-gray-950 flex flex-wrap gap-5 w-calc-100-minus-5vw'>
       <div className="w-fit">
         <Todo />
         <Quote />
@@ -13,7 +15,11 @@ export default function Main() {
       </div>
       <div className="w-fit min-w-[600px]">
         <Announcements />
+        <div className="flex items-center justify-between gap-3">
+          <GoogleSlides />
+        </div>
       </div>
+      <CustomTabsDisplay />
     </div>
   )
 }

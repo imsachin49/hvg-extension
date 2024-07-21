@@ -45,13 +45,13 @@ export default function Todo() {
                     <input
                         value={newTask}
                         onChange={(e) => setNewTask(e.target.value)}
-                        className="border w-full px-[10px] py-[5px] rounded-md outline-none text-sm placeholder-gray-500"
+                        className="w-full px-[10px] py-[7px] rounded-md border-none outline-none text-sm"
                         placeholder="Add Your Task"
                         type="text"
                     />
-                    <button onClick={handleAddTask} className="bg-[#5fa163] border-[#9dad9e] shadow-md px-3 rounded-md text-white"><IoAddOutline /></button>
+                    <button onClick={handleAddTask} className="bg-[#3B656A] border-[#9dad9e] shadow-md px-3 rounded-md text-white"><IoAddOutline /></button>
                 </div>
-                {tasks.length === 0 && <h1 className="text-center text-sm text-indigo-600 py-1">No Tasks Added</h1>}
+                {tasks.length === 0 && <h1 className="text-center text-sm text-gray-200 pt-2">No Tasks Added</h1>}
                 {tasks.map((task, index) => (
                     <div key={index} className="border border-[#9dad9e] rounded-md flex items-center px-2 gap-1">
                         <input

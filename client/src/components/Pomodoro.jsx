@@ -47,9 +47,9 @@ const Pomodoro = () => {
       case 'Short Break':
         return 'bg-light-indigo';
       case 'Long Break':
-        return 'bg-light-teal';
+        return 'bg-light-red';
       default:
-        return 'bg-light-red';  // Define a custom class for the default color
+        return 'bg-light-teal';  // Define a custom class for the default color
     }
   };
 
