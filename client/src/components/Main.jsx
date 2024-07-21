@@ -2,8 +2,8 @@ import Announcements from "./Announcements";
 import Todo from "./Todo";
 import Quote from './Quote';
 import Pomodoro from "./Pomodoro";
-import GoogleSlides from "./GoogleSlides";
 import CustomTabsDisplay from "./CustomTabsDisplay";
+import GoogleWidgets from "./GoogleWidgets";
 
 export default function Main() {
   return (
@@ -15,11 +15,9 @@ export default function Main() {
       </div>
       <div className="w-fit min-w-[600px]">
         <Announcements />
-        <div className="flex items-center justify-between gap-3">
-          <GoogleSlides />
-        </div>
       </div>
       <CustomTabsDisplay />
+      <GoogleWidgets />
     </div>
   )
 }

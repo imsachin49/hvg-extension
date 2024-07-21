@@ -4,13 +4,10 @@ export default function GoogleSlides({ iframelink }) {
     <div className="my-5 rounded-md w-fit">
       <iframe
         src={iframelink}
-        className="rounded-md p-0"
         frameBorder="0"
-        width="700"
-        height="404"
+        width="570"
+        height="350"
         allowfullscreen="true"
-        mozallowfullscreen="true"
-        webkitallowfullscreen="true"
       />
     </div>
   );

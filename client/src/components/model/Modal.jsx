@@ -23,6 +23,11 @@ export default function ModalComp({ openModal, setOpenModal }) {
         return regex.test(url);
     }
 
+    // function isValidGoogleSlideUrl(url) {
+    //     const regex = /^https:\/\/docs\.google\.com\/presentation\/d\/[a-zA-Z0-9-_]+/;
+    //     return regex.test(url);
+    // }
+
     function onCloseModal() {
         setOpenModal(false);
         setTab('');
@@ -47,12 +52,15 @@ export default function ModalComp({ openModal, setOpenModal }) {
     }
 
     function handleAddTab() {
-        if ((tabType.id === 'regular' && (!tab || !tabUrl)) || (tabType.id === 'google-slide' && !tabUrl)) {
-            setUrlError('Please fill in all fields.');
+        console.log("tabtype",tabType.id);
+        if ((tabType.id === 'regular' && (!tab || !tabUrl))) {
+            setUrlError('Please fill in all fields');
             return;
-        }
-        if (!isValidUrl(tabUrl)) {
-            setUrlError('Please enter a valid URL.');
+        }else if((tabType.id === 'google-slide' && !tabUrl)){
+            setUrlError('Please fill in the tabUrl');
+            return;
+        }else if(!isValidUrl(tabUrl)) {
+            setUrlError('Please enter a valid URL');
             return;
         }
         const newTab = { tab, tabUrl, type: tabType.id };
