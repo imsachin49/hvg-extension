@@ -46,7 +46,7 @@ wss.on("connection", (ws) => {
   ws.on("close", () => {
     console.log("Client disconnected");
   });
-  ws.send("Connected to socket server");
+  // ws.send("Connected to socket server");
 });
 
 const broadcastAnnouncement = (announcement) => {
