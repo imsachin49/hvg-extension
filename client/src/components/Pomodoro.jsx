@@ -1,15 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import alarmSound from '../assets/alarm-clock-1.mp3'; 
 
 const Pomodoro = () => {
   const [time, setTime] = useState(1500); 
   const [active, setActive] = useState(false);
   const [mode, setMode] = useState('Pomodoro'); // Modes: Pomodoro, Short Break, Long Break
+  const audioRef = useRef(new Audio(alarmSound));
 
   useEffect(() => {
     let timer = null;
     if (active) {
       timer = setInterval(() => {
-        setTime((prev) => (prev > 0 ? prev - 1 : 0));
+        setTime((prev) => {
+          if (prev > 0) {
+            return prev - 1;
+          } else {
+            playAlarm();
+            clearInterval(timer);
+            return 0;
+          }
+        });
       }, 1000);
     } else if (!active && time !== 0) {
       clearInterval(timer);
@@ -17,23 +27,35 @@ const Pomodoro = () => {
     return () => clearInterval(timer);
   }, [active, time]);
 
+  const playAlarm = () => {
+    audioRef.current.play();
+  };
+
+  const stopAlarm = () => {
+    audioRef.current.pause();
+    audioRef.current.currentTime = 0; 
+  };
+
   const startTimer = () => {
     setActive(true);
   };
 
   const stopTimer = () => {
     setActive(false);
+    stopAlarm();
   };
 
   const resetTimer = () => {
     setActive(false);
+    stopAlarm(); 
     setTime(mode === 'Pomodoro' ? 1500 : mode === 'Short Break' ? 300 : 900);
   };
 
   const switchMode = (newMode) => {
     setMode(newMode);
     setActive(false);
-    setTime(newMode === 'Pomodoro' ? 1500 : newMode === 'Short Break' ? 300 : 900);
+    stopAlarm(); 
+    setTime(newMode === 'Pomodoro' ? 1500 : newMode === 'Short Break' ? 300 : newMode === 'Long Break' ? 900 : 1500);
   };
 
   const formatTime = (time) => {
@@ -96,5 +118,6 @@ const Pomodoro = () => {
     </div>
   );
 };
+
 
 export default Pomodoro;
