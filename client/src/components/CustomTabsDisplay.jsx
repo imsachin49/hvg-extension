@@ -21,7 +21,7 @@ export default function CustomTabsDisplay() {
           className="w-full relative bg-light-indigo rounded-lg overflow-hidden cursor-pointer shadow-md"
         >
           <div className="h-full flex flex-col  p-3">
-            <div className="flex  text-white text-xl mb-2 justify-between">
+            <div className="flex text-white text-xl mb-2 justify-between">
               <h3 className="text-white text-sm font-bold mb-1">{tab.tab}</h3>
               <button
                 onClick={(e) => handleCloseTab(e, tab)}
