@@ -2,8 +2,8 @@ import { HiOutlineHome } from "react-icons/hi2";
 import { CiSettings } from "react-icons/ci";
 import { AiOutlineOpenAI } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
-import { ModalComp } from "./Modal";
 import { useState } from "react";
+import ModalComp from "./model/Modal";
 
 export default function Sidebar() {
   const [openModal, setOpenModal] = useState(false);

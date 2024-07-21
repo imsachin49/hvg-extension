@@ -6,7 +6,7 @@ export default function CustomTabsDisplay() {
     const handleTabClick = (url) => {
         window.open(url, '_blank');
     };
-
+    
     return (
         <div className="flex flex-wrap gap-4">
             {tabs.map((tab, index) => (
