@@ -7,16 +7,18 @@ export default function CustomTabsDisplay() {
   const handleTabClick = (url) => {
     window.open(url, "_blank");
   };
+  
   const handleCloseTab = (e, tab) => {
-    e.stopPropagation(); // Prevent the tab from opening when closing
+    e.stopPropagation(); 
     removeTab(tab);
   };
+
   return (
     <div className="flex flex-wrap gap-4">
       {tabs.map((tab, index) => (
         <div
           key={index}
-          className=" relative w-[120px] h-[100px] bg-light-indigo rounded-lg overflow-hidden cursor-pointer shadow-md"
+          className="w-full relative bg-light-indigo rounded-lg overflow-hidden cursor-pointer shadow-md"
         >
           <div className="h-full flex flex-col  p-3">
             <div className="flex  text-white text-xl mb-2 justify-between">

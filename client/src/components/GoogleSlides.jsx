@@ -1,8 +1,9 @@
-export default function GoogleSlides() {
+/* eslint-disable react/prop-types */
+export default function GoogleSlides({ iframelink }) {
   return (
     <div className="my-5 rounded-md w-fit">
       <iframe
-        src="https://docs.google.com/spreadsheets/d/15G8qG7TDxAPn7kOtQHTgdG2VpxBMYZuJknoOF9Uc_0U/edit?usp=sharing"
+        src={iframelink}
         className="rounded-md p-0"
         frameBorder="0"
         width="700"
