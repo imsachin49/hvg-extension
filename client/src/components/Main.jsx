@@ -5,6 +5,7 @@ import Pomodoro from "./Pomodoro";
 import CustomTabsDisplay from "./CustomTabsDisplay";
 import GoogleTabDisplay from "./GoogleTabs";
 import { useTabs } from "./TabsProvider";
+import Kanban from "./kanban";
 
 export default function Main() {
   const { googleTab, tabs } = useTabs();
@@ -16,6 +17,7 @@ export default function Main() {
         {googleTab.map((tab, index) => (
           <GoogleTabDisplay key={index} tab={tab} />
         ))}
+        <Kanban/>
       </div>
       <div className="w-fit space-y-5">
         <Todo />
